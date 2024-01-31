@@ -25,35 +25,35 @@
         <div class="card quiz-card">
             <img src="img/learning.jpg" class="card-img-top" alt="card-header-img">
             <div class="card-body">
-                <h5 class="card-title">Frage</h5>
+                <h5 class="card-title" id="questionText">Frage</h5>
                 
-                <div class="card mb-2">
-                    <div class="card-body">
+                <div class="card mb-2" onclick="answer(answer_1)">
+                    <div class="card-body possible-answer" id="answer_1">
                         This is some text within a card body.
                     </div>
                 </div>
                 
-                <div class="card mb-2">
-                    <div class="card-body">
+                <div class="card mb-2" onclick="answer(answer_2)">
+                    <div class="card-body possible-answer" id="answer_2">
                         This is some text within a card body.
                     </div>
                 </div>
                 
-                <div class="card mb-2">
-                    <div class="card-body">
+                <div class="card mb-2" onclick="answer(answer_3)">
+                    <div class="card-body possible-answer" id="answer_3">
                         This is some text within a card body.
                     </div>
                 </div>
                 
-                <div class="card mb-2">
-                    <div class="card-body">
+                <div class="card mb-2" onclick="answer(answer_4)">
+                    <div class="card-body possible-answer" id="answer_4">
                         This is some text within a card body.
                     </div>
                 </div>
                 
                 <div class="question-footer">
                     <span>
-                        <b>1</b> von <b>5</b> Fragen
+                        <b>1</b> von <b id="all-questions">5</b> Fragen
                     </span>
                     
                     <button class="btn btn-primary">Nächste Frage</button>
