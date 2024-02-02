@@ -63,6 +63,11 @@ function answer(selection) {
     document.getElementById('next-btn').disabled = false;
 }
 
+function nextQuestion() {
+    currentQuestion++; //oben wird currentQuestion mit Null definiert (0-te stelle der Fragen, also Real 1. Frage). Für die nächste Frage müssen wir um eins erhöhen
+    showQuestion();       
+}
+
 function init() {
     document.getElementById('all-questions').innerHTML = questions.length;
     showQuestion();
