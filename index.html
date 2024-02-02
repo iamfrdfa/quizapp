@@ -27,25 +27,25 @@
             <div class="card-body">
                 <h5 class="card-title" id="questionText">Frage</h5>
                 
-                <div class="card mb-2" onclick="answer(answer_1)">
+                <div class="card mb-2" onclick="answer('answer_1')">
                     <div class="card-body possible-answer" id="answer_1">
                         This is some text within a card body.
                     </div>
                 </div>
                 
-                <div class="card mb-2" onclick="answer(answer_2)">
+                <div class="card mb-2" onclick="answer('answer_2')">
                     <div class="card-body possible-answer" id="answer_2">
                         This is some text within a card body.
                     </div>
                 </div>
                 
-                <div class="card mb-2" onclick="answer(answer_3)">
+                <div class="card mb-2" onclick="answer('answer_3')">
                     <div class="card-body possible-answer" id="answer_3">
                         This is some text within a card body.
                     </div>
                 </div>
                 
-                <div class="card mb-2" onclick="answer(answer_4)">
+                <div class="card mb-2" onclick="answer('answer_4')">
                     <div class="card-body possible-answer" id="answer_4">
                         This is some text within a card body.
                     </div>
@@ -56,7 +56,7 @@
                         <b>1</b> von <b id="all-questions">5</b> Fragen
                     </span>
                     
-                    <button class="btn btn-primary">Nächste Frage</button>
+                    <button class="btn btn-primary" id="next-btn" disabled>Nächste Frage</button>
                 </div>
             </div>
         </div>
