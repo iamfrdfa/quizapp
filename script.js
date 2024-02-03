@@ -30,7 +30,23 @@ let questions = [
         "answer_3": "rate = 100;",
         "answer_4": "let rate = 100;",
         "right_answer": 4
-    }    
+    },
+    {
+        "question": "Wer hat HTML erfunden?",
+        "answer_1": "Robbie Williams",
+        "answer_2": "Justin Bieber",
+        "answer_3": "Tim Berners-Lee",
+        "answer_4": "Lady Gaga",
+        "right_answer": 3
+    },
+    {
+        "question": "Welches Attribut kann man NICHT für Textarea verwenden?",
+        "answer_1": "readonly",
+        "answer_2": "max",
+        "answer_3": "from",
+        "answer_4": "spellcheck",
+        "right_answer": 1
+    }
 ];
 
 let rightQuestions = 0;
@@ -38,6 +54,9 @@ let currentQuestion = 0;
 
 function showQuestion() {
     document.getElementById('question-number').innerHTML = currentQuestion + 1;
+    
+    // Show Endscreen
+
     if (currentQuestion >= questions.length) {
         document.getElementById('endScreen').style = ``;
         document.getElementById('question-body').style = `display: none;`;
@@ -46,7 +65,13 @@ function showQuestion() {
         document.getElementById('amount-right-questions').innerHTML = rightQuestions;
         document.getElementById('header-image').src = 'img/trophy.png';
     }
-    else {
+    else { //Show Question
+        let percent = (currentQuestion + 1) / questions.length;
+        percent = Math.round(percent * 100);
+        document.getElementById('progress-bar').innerHTML = `${percent} %`;
+        document.getElementById('progress-bar').style = `width: ${percent}%;`;
+
+        console.log('Fortschrit:', percent);
         let question = questions[currentQuestion];
         
         document.getElementById('questionText').innerHTML = question['question'];
