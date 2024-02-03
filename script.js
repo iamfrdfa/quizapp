@@ -121,6 +121,15 @@ function resetAnswerButtons() {
     document.getElementById('answer_4').parentNode.classList.remove('bg-success');
 }
 
+function restartGame() {
+    document.getElementById('header-image').src = 'img/learning.jpg';
+    document.getElementById('question-body').style = `display: block;`; //Questionbody wieder einblenden (Spiel von vorne beginnen)
+    document.getElementById('endScreen').style = `display: none;`; //Endscreen ausblenden
+    rightQuestions = 0;
+    currentQuestion = 0;
+    init();
+}
+
 function init() {
     document.getElementById('all-questions').innerHTML = questions.length;
     showQuestion();

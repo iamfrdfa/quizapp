@@ -57,3 +57,9 @@ body {
 .progress {
     border-radius: 0 !important;
 }
+
+.btn-row {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
