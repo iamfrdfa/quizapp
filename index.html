@@ -18,15 +18,21 @@
 
 <body onload="init()">
     <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">Navbar</span>
+        <span class="navbar-brand mb-0 h1">Quizapp</span>
     </nav>
     
     <div class="container">
         <div class="card quiz-card">
-            <img src="img/learning.jpg" class="card-img-top" alt="card-header-img">
+            <img src="img/learning.jpg" id="header-image" class="card-img-top" alt="card-header-img">
 
             <div class="card-body" id="endScreen" style="display: none;">
-                Quiz beendet!
+                <div class="text-center final-headline">
+                    Quiz beendet!
+                </div>
+
+                <div class="text-center">
+                    Du hast <b id="amount-right-questions">1</b> von <b id="amount-of-questions">5</b> Fragen richtig beantwortet!
+                </div>
             </div>
             
             <div class="card-body" id="question-body">

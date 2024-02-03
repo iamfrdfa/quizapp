@@ -35,3 +35,21 @@ body {
 .bg-danger {
     color: white !important;
 }
+
+.width-100 {
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.padding-tb-24 {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.final-headline {
+    font-size: 38px;
+    margin-bottom: 32px;
+}

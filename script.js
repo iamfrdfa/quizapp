@@ -29,11 +29,11 @@ let questions = [
         "answer_2": "100 = let rate;",
         "answer_3": "rate = 100;",
         "answer_4": "let rate = 100;",
-        "right_answer": 3
-    },
-    
+        "right_answer": 4
+    }    
 ];
 
+let rightQuestions = 0;
 let currentQuestion = 0;
 
 function showQuestion() {
@@ -41,6 +41,10 @@ function showQuestion() {
     if (currentQuestion >= questions.length) {
         document.getElementById('endScreen').style = ``;
         document.getElementById('question-body').style = `display: none;`;
+
+        document.getElementById('amount-of-questions').innerHTML = questions.length;
+        document.getElementById('amount-right-questions').innerHTML = rightQuestions;
+        document.getElementById('header-image').src = 'img/trophy.png';
     }
     else {
         let question = questions[currentQuestion];
@@ -62,8 +66,9 @@ function answer(selection) {
     
     let idOfRightAnswer = `answer_${question['right_answer']}`;
     
-    if (selectedQuestionNumber == question['right_answer']) {
+    if (selectedQuestionNumber == question['right_answer']) { //Richtige Frage beantwortet
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        rightQuestions++;
     }
     else {
         document.getElementById(selection).parentNode.classList.add('bg-danger');
