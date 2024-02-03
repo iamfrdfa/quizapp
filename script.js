@@ -51,35 +51,50 @@ let questions = [
 
 let rightQuestions = 0;
 let currentQuestion = 0;
+let AUDIO_SUCCESS = new Audio('audio/success.mp3');
+let AUDIO_FAIL = new Audio('audio/fail.mp3');
 
 function showQuestion() {
     document.getElementById('question-number').innerHTML = currentQuestion + 1;
+
+    if (gameIsOver()) {
+        showEndScreen();
+    }
+    else { 
+        updateProgressBar();
+        updateToNextQuestion();
+    }
+}
+
+function gameIsOver() {
+    return currentQuestion >= questions.length;
+}
+
+function showEndScreen() {
+    document.getElementById('endScreen').style = ``;
+    document.getElementById('question-body').style = `display: none;`;
+
+    document.getElementById('amount-of-questions').innerHTML = questions.length;
+    document.getElementById('amount-right-questions').innerHTML = rightQuestions;
+    document.getElementById('header-image').src = 'img/trophy.png';
+}
+
+function updateToNextQuestion() {
+    //Show next Question
+    let question = questions[currentQuestion];
     
-    // Show Endscreen
+    document.getElementById('questionText').innerHTML = question['question'];
+    document.getElementById('answer_1').innerHTML = question['answer_1'];
+    document.getElementById('answer_2').innerHTML = question['answer_2'];
+    document.getElementById('answer_3').innerHTML = question['answer_3'];
+    document.getElementById('answer_4').innerHTML = question['answer_4'];
+}
 
-    if (currentQuestion >= questions.length) {
-        document.getElementById('endScreen').style = ``;
-        document.getElementById('question-body').style = `display: none;`;
-
-        document.getElementById('amount-of-questions').innerHTML = questions.length;
-        document.getElementById('amount-right-questions').innerHTML = rightQuestions;
-        document.getElementById('header-image').src = 'img/trophy.png';
-    }
-    else { //Show Question
-        let percent = (currentQuestion + 1) / questions.length;
-        percent = Math.round(percent * 100);
-        document.getElementById('progress-bar').innerHTML = `${percent} %`;
-        document.getElementById('progress-bar').style = `width: ${percent}%;`;
-
-        console.log('Fortschrit:', percent);
-        let question = questions[currentQuestion];
-        
-        document.getElementById('questionText').innerHTML = question['question'];
-        document.getElementById('answer_1').innerHTML = question['answer_1'];
-        document.getElementById('answer_2').innerHTML = question['answer_2'];
-        document.getElementById('answer_3').innerHTML = question['answer_3'];
-        document.getElementById('answer_4').innerHTML = question['answer_4'];
-    }
+function updateProgressBar() {
+    let percent = (currentQuestion + 1) / questions.length;
+    percent = Math.round(percent * 100);
+    document.getElementById('progress-bar').innerHTML = `${percent} %`;
+    document.getElementById('progress-bar').style = `width: ${percent}%;`;
 }
 
 function answer(selection) {
@@ -91,15 +106,21 @@ function answer(selection) {
     
     let idOfRightAnswer = `answer_${question['right_answer']}`;
     
-    if (selectedQuestionNumber == question['right_answer']) { //Richtige Frage beantwortet
+    if (rightAnswerSelected(selectedQuestionNumber)) { //Richtige Frage beantwortet
         document.getElementById(selection).parentNode.classList.add('bg-success');
+        AUDIO_SUCCESS.play();
         rightQuestions++;
     }
     else {
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+        AUDIO_FAIL.play();
     }
     document.getElementById('next-btn').disabled = false;
+}
+
+function rightAnswerSelected(selectedQuestionNumber) { //Modul 7 Video 23: Clean Coding - Funktionen anpassen (6:45min)
+    return selectedQuestionNumber == question['right_answer'];
 }
 
 function nextQuestion() {
